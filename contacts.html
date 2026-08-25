@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>contacts!</title>
+    <link rel="icon" type="image/png" href="images/baby.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&display=block" rel="stylesheet">
+</head>
+
+<body>
+
+    <main class="page contacts">
+
+        <!-- TITLE  -->
+        <div class="contact-title">
+            IF L<img src="images/star.png" alt="" class="title-star">ST
+        </div>
+
+
+        <div class="contact-please">
+            please
+        </div>
+
+        <div class="contact-contact">
+            contact!
+        </div>
+
+
+        <!-- LEFT -->
+        <div class="contact-list contact-list-left">
+
+            <a href="#" class="copy-btn" data-copy="mawarahmed006@gmail.com">
+                email
+            </a>
+
+            <a href="https://linkedin.com//in/mawara-ahmed-5b6287280/" target="_blank">
+                linkedin
+            </a>
+
+            <a href="resume.pdf" target="_blank">
+                resume
+            </a>
+
+        </div>
+
+
+        <!-- CHILDHOOD PHOTO -->
+        <img
+            src="images/baby.png"
+            class="contact-photo"
+        >
+
+
+        <!-- RIGHT -->
+        <div class="contact-list contact-list-right">
+
+        <a href="#" class="copy-btn" data-copy="+92 313 4386579">
+            cellphone
+        </a>
+
+            <a href="https://instagram.com/mawarawrahmed" target="_blank">
+                instagram
+            </a>
+
+        </div>
+
+        <img src="images/star.png" alt="" class="star-small contact-star">
+
+
+                <!-- BACK ARROW -->
+        <a href="index.html" class="back-arrow">
+            <img src="images/arrow.png" alt="back to home">
+        </a>
+
+    </main>
+
+<!-- STAR SPIN -->
+
+  <script>
+    const stars = document.querySelectorAll('.landing-star, .title-star, .contact-star, .about-star');
+
+    stars.forEach(star => {
+      let rotation = 0;
+      let animId = null;
+
+      const style = window.getComputedStyle(star);
+      const matrix = style.transform;
+      if (matrix !== 'none') {
+        const values = matrix.split('(')[1].split(')')[0].split(',');
+        const a = parseFloat(values[0]);
+        const b = parseFloat(values[1]);
+        rotation = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+      }
+
+      star.addEventListener('mouseenter', () => {
+        function spin() {
+          rotation += 0.8; // Change speed here (lower = slower)
+          star.style.transform = `rotate(${rotation}deg)`;
+          animId = requestAnimationFrame(spin);
+        }
+        spin();
+      });
+
+      star.addEventListener('mouseleave', () => {
+        cancelAnimationFrame(animId); 
+      });
+    });
+  </script>
+
+    <!--  COPIED!  -->
+      <script>
+        // select all elements that have the copy-btn class
+        document.querySelectorAll('.copy-btn').forEach(link => {
+        // listen for a click event on each copy button
+        link.addEventListener('click', (e) => {
+            // stop the default link behavior (prevents jumping to the top of the page)
+            e.preventDefault();
+            
+            // read the hidden value stored inside the element's data-copy attribute
+            const textToCopy = link.getAttribute('data-copy');
+            
+            // remember what the link originally said (e.g., "email" or "cellphone")
+            const originalText = link.innerText;
+
+            // write the extracted text string straight into the user's system clipboard
+            navigator.clipboard.writeText(textToCopy).then(() => {
+            // temporarily swap the visible text on the page to "Copied!" for feedback
+            link.innerText = 'Copied!';
+            
+            // wait 1500 milliseconds (1.5 seconds) before running the inner function
+            setTimeout(() => {
+                // revert the link text back to what it originally said
+                link.innerText = originalText;
+            }, 1500);
+            });
+        });
+        });
+    </script>   
+
+</body>
+
+</html>

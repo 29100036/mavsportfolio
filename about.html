@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>about me!</title>
+    <link rel="icon" type="image/png" href="images/baby.png">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="page about">
+
+        <img src="images/star.png" alt="" class="about-star">
+
+
+        <!-- ABOUT ME IMAGES -->
+        <div class="person-container">
+            <!--  cutout  -->
+            <img src="images/cutout.png" class="about-person" alt="Photo of me">
+            
+            <!--  badge -->
+            <img src="images/badge.png" class="about-badge" alt="Girl of the Year Badge">
+            </div>
+
+
+        <!-- ABOUT ME TEXT -->
+        <section class="about-content">
+
+            <div class="hello-box">
+                hello!
+            </div>
+
+
+            <div class="about-text">
+
+                <p>
+                    i'm mawara, a 19-year-old computer science major who's finally starting to 
+                    make things instead of just learning about them.
+                </p>
+
+                <p>
+                    i love the parts of tech that get to be creative — when an idea starts as a 
+                    notes app entry, turns into some genuinely questionable code, and somehow 
+                    becomes a real thing you can click on.
+                </p>
+
+                <p>
+                    this website is actually the first "real" project, which feels a little funny to admit, but
+                    also exactly right!  i'm figuring things out as i go, instead of waiting until i feel 
+                    ready.
+                </p>
+
+                <p>
+                    some of it's finished. most of it's in the works.
+                </p>
+
+                <p>
+                    come have a look around !
+                </p>
+
+            </div>
+
+        </section>
+
+
+                <!-- BACK ARROW -->
+        <a href="index.html" class="back-arrow">
+            <img src="images/arrow.png" alt="back to home">
+        </a>
+
+    </main>
+
+    <!-- STAR SPIN -->
+
+    <script>
+        const stars = document.querySelectorAll('.landing-star, .title-star, .contact-star, .about-star');
+
+        stars.forEach(star => {
+        let rotation = 0;
+        let animId = null;
+
+        const style = window.getComputedStyle(star);
+        const matrix = style.transform;
+        if (matrix !== 'none') {
+            const values = matrix.split('(')[1].split(')')[0].split(',');
+            const a = parseFloat(values[0]);
+            const b = parseFloat(values[1]);
+            rotation = Math.round(Math.atan2(b, a) * (180 / Math.PI));
+        }
+
+        star.addEventListener('mouseenter', () => {
+            function spin() {
+            rotation += 0.8; // Change speed here (lower = slower)
+            star.style.transform = `rotate(${rotation}deg)`;
+            animId = requestAnimationFrame(spin);
+            }
+            spin();
+        });
+
+        star.addEventListener('mouseleave', () => {
+            cancelAnimationFrame(animId); 
+        });
+        });
+    </script>
+
+</body>
+
+</html>
+

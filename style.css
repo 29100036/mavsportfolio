@@ -1,0 +1,273 @@
+/* #region BASE */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #ff00a0;
+  font-family: sans-serif;
+  color: white;
+}
+
+.page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+/* #endregion */
+
+/* #region GLOBAL ARROW */
+.back-arrow {
+  position: absolute;
+  top: 40px;
+  left: 60px; /* Aligned tip directly with the left border of the hello! box */
+  z-index: 100;
+}
+
+.back-arrow img {
+  width: 36px; /* Scaled down slightly */
+  height: auto;
+  display: block;
+}
+/* #endregion */
+
+/* #region HOMEPAGE / INDEX */
+
+.landing-middle {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 45px;
+}
+
+.face {
+  font-family: "MS PGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
+  font-size: 16rem;
+  font-weight: normal;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  line-height: 0.8;
+  transform: translateY(-25px);
+}
+
+.landing-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transform: translateY(20px);
+}
+
+.landing-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.landing-star {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 180px;
+  height: auto;
+}
+/* #endregion */
+
+/* #region ABOUT ME */
+.about-content {
+  position: absolute;
+  left: 60px;
+  top: 95px; 
+  max-width: 440px;
+  z-index: 10;
+}
+
+.hello-box {
+  display: inline-block;
+  background: white;
+  color: #ff00a0;
+  font-size: 3.2rem;
+  font-weight: bold;
+  padding: 2px 14px;
+  margin-bottom: 8px;
+}
+
+.about-text p {
+  font-size: 1.05rem;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+/* Container holds both the photo and badge together */
+.person-container {
+  position: absolute;
+  bottom: 0;
+  right: 21%;
+  height: 98vh; /* scales everything together based on screen height */
+  transform: scale(1.43); /* maintains your original scale */
+  transform-origin: bottom center;
+  z-index: 2; /* keeps person/badge on top of the star */
+  pointer-events: none; /* so cursor hits the star behind it */
+}
+
+/* Photo takes up full height of the container */
+.about-person {
+  height: 100%;
+  width: auto; /* preserves photo aspect ratio */
+  display: block; /* removes potential vertical whitespace */
+}
+
+/* Badge pinned onto the photo (adjust position here) */
+.about-badge {
+  position: absolute;
+  top: 48%; /* Adjust to move badge up/down */
+  left: 39%; /* Adjust to move badge left/right */
+  width: 60px; /* Adjust size of badge here */
+  transform: rotate(-12deg); /* Slightly tilted pin look */
+}
+
+.about-star {
+  position: absolute;
+  right: 1%;
+  width: 43vw;
+  z-index: 1; 
+  transform: rotate(29deg);
+  transition: none;
+  cursor: pointer;
+  pointer-events: auto; 
+}
+
+/* #endregion */
+
+/* #region CONTACTS */
+.contacts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  position: relative;
+}
+
+.contact-title {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 14rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  line-height: 1;
+  margin-top: 15px;
+}
+
+.title-star {
+  width: 180px;
+  height: auto;
+  max-height: 180px; 
+  object-fit: contain;
+}
+
+.contact-please {
+  font-size: 2.8rem;
+  font-weight: 700;
+  position: relative;
+  left: -315px;
+  margin-top: -10px;
+}
+
+.contact-contact {
+  font-size: 2.8rem;
+  font-weight: 700;
+  position: relative;
+  right: -264px;
+  margin-top: -10px;
+}
+
+.contact-photo {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* links list */
+.contact-list {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-list a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 400; 
+  position: relative;
+}
+
+/* left list */
+.contact-list-left {
+  left: 20%;
+  top: 67%;
+  text-align: right;
+}
+
+.contact-list-left a:nth-child(1) { /* email */
+  right: -2px;
+}
+
+.contact-list-left a:nth-child(2) { /* linkedin */
+  right: -150px;
+}
+
+.contact-list-left a:nth-child(3) { /* resume */
+  right: -2px;
+}
+
+/* right list */
+.contact-list-right {
+  right: 21%;
+  top: 64%;
+  text-align: left;
+}
+
+.contact-list-right a:nth-child(1) { /* cellphone */
+  left: 26px;
+}
+
+.contact-list-right a:nth-child(2) { /* instagram */
+  left: -60px;
+}
+
+.contact-star {
+  position: absolute;
+  bottom: 9%;
+  right: 23%;
+  width: 50px;
+}
+/* #endregion */
+
+/* #region STAR SPIN */
+/* @keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.landing-star:hover, .title-star:hover, .contact-star:hover, .about-star:hover {
+  animation: spin 3.5s linear infinite;
+  cursor: pointer;
+} */
+/* #endregion */
+
