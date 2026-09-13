@@ -74,38 +74,11 @@
 
     </main>
 
-    <!-- STAR SPIN -->
-
+    <script src="star-spin.js"></script>
     <script>
-        document.querySelectorAll('.about-star').forEach(star => {
-        let rotation = 0;
-        let animId = null;
-
-        const style = window.getComputedStyle(star);
-        const matrix = style.transform;
-        if (matrix !== 'none') {
-            const values = matrix.split('(')[1].split(')')[0].split(',');
-            const a = parseFloat(values[0]);
-            const b = parseFloat(values[1]);
-            rotation = Math.round(Math.atan2(b, a) * (180 / Math.PI));
-        }
-
-        star.addEventListener('mouseenter', () => {
-            function spin() {
-            rotation += 0.8; // Change speed here (lower = slower)
-            star.style.transform = `rotate(${rotation}deg)`;
-            animId = requestAnimationFrame(spin);
-            }
-            spin();
-        });
-
-        star.addEventListener('mouseleave', () => {
-            cancelAnimationFrame(animId); 
-        });
-        });
+        initStarSpin('.about-star');
     </script>
 
 </body>
 
 </html>
-

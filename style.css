@@ -3,8 +3,7 @@ body, html {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
   background-color: #ff00a0;
   font-family: sans-serif;
   color: white;
@@ -13,20 +12,21 @@ body, html {
 .page {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  overflow: hidden;
 }
 /* #endregion */
 
 /* #region GLOBAL ARROW */
 .back-arrow {
   position: absolute;
-  top: 40px;
-  left: 60px; 
+  top: clamp(20px, 5vw, 40px);
+  left: clamp(24px, 6vw, 60px);
   z-index: 100;
 }
 
 .back-arrow img {
-  width: 36px; 
+  width: clamp(26px, 5vw, 36px);
   height: auto;
   display: block;
 }
@@ -36,16 +36,16 @@ body, html {
 
 .landing-middle {
   position: absolute;
-  bottom: 40px;
-  left: 40px;
+  bottom: clamp(20px, 5vw, 40px);
+  left: clamp(20px, 5vw, 40px);
   display: flex;
   align-items: center;
-  gap: 45px;
+  gap: clamp(20px, 4vw, 45px);
 }
 
 .face {
   font-family: "MS PGothic", "Hiragino Kaku Gothic Pro", "Meiryo", sans-serif;
-  font-size: 16rem;
+  font-size: clamp(4.5rem, 16vw, 16rem);
   font-weight: normal;
   white-space: nowrap;
   display: flex;
@@ -57,33 +57,52 @@ body, html {
 .landing-nav {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: clamp(10px, 2vw, 18px);
   transform: translateY(20px);
 }
 
 .landing-nav a {
   color: white;
   text-decoration: none;
-  font-size: 2.6rem;
+  font-size: clamp(1.3rem, 3.5vw, 2.6rem);
   font-weight: 500;
   line-height: 1.2;
 }
 
 .landing-star {
   position: absolute;
-  top: 40px;
-  right: 40px;
-  width: 180px;
+  top: clamp(20px, 5vw, 40px);
+  right: clamp(20px, 5vw, 40px);
+  width: clamp(80px, 15vw, 180px);
   height: auto;
+  cursor: pointer;
+}
+
+/* stack face above nav once the row gets too tight to sit side by side */
+@media (max-width: 600px) {
+  .landing-middle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    bottom: 30px;
+  }
+
+  .face {
+    transform: none;
+  }
+
+  .landing-nav {
+    transform: none;
+  }
 }
 /* #endregion */
 
 /* #region ABOUT ME */
 .about-content {
   position: absolute;
-  left: 60px;
-  top: 95px; 
-  max-width: 440px;
+  left: clamp(24px, 6vw, 60px);
+  top: clamp(60px, 10vw, 95px);
+  max-width: min(440px, 80vw);
   z-index: 10;
 }
 
@@ -91,14 +110,14 @@ body, html {
   display: inline-block;
   background: white;
   color: #ff00a0;
-  font-size: 3.2rem;
+  font-size: clamp(1.8rem, 5vw, 3.2rem);
   font-weight: bold;
   padding: 2px 14px;
   margin-bottom: 8px;
 }
 
 .about-text p {
-  font-size: 1.05rem;
+  font-size: clamp(0.9rem, 2vw, 1.05rem);
   line-height: 1.35;
   margin-bottom: 12px;
 }
@@ -108,11 +127,11 @@ body, html {
   position: absolute;
   bottom: 0;
   right: 21%;
-  height: 98vh; 
-  transform: scale(1.43); 
+  height: 98vh;
+  transform: scale(1.43);
   transform-origin: bottom center;
-  z-index: 2; 
-  pointer-events: none; 
+  z-index: 2;
+  pointer-events: none;
 }
 
 .about-person {
@@ -124,23 +143,46 @@ body, html {
 /* badge pinned onto the photo */
 .about-badge {
   position: absolute;
-  top: 48%; 
-  left: 39%; 
-  width: 60px; 
-  transform: rotate(-12deg); 
+  top: 48%;
+  left: 39%;
+  width: clamp(36px, 6vw, 60px);
+  transform: rotate(-12deg);
 }
 
 .about-star {
   position: absolute;
   right: 1%;
   width: 43vw;
-  z-index: 1; 
+  z-index: 1;
   transform: rotate(29deg);
   transition: none;
   cursor: pointer;
-  pointer-events: auto; 
+  pointer-events: auto;
 }
 
+/* below this width the photo + text start overlapping badly, so stack them */
+@media (max-width: 700px) {
+  .about-content {
+    position: static;
+    max-width: 90vw;
+    margin: 30px auto 0;
+    text-align: center;
+  }
+
+  .person-container {
+    position: static;
+    height: 55vh;
+    transform: scale(1);
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .about-star {
+    width: 60vw;
+    right: -10vw;
+  }
+}
 /* #endregion */
 
 /* #region PROJECTS */
@@ -167,17 +209,21 @@ body.white-bg {
 
 .wip-text {
   color: #ff00a0;
-  font-size: 3.8rem;
-  font-weight: 800;
+  font-size: clamp(2rem, 7vw, 3.8rem);
+  font-weight: 750;
   margin: 0;
   letter-spacing: 1px;
+  padding: 0 20px;
+  text-align: center;
 }
 
 .projects-subtext {
   color: #ff00a0;
-  font-size: 1.6rem;
+  font-size: clamp(1rem, 3.5vw, 1.6rem);
   font-weight: 600;
   margin-top: 14px;
+  padding: 0 20px;
+  text-align: center;
 }
 /* #endregion */
 
@@ -194,7 +240,7 @@ body.white-bg {
 
 .contact-title {
   font-family: 'Archivo Narrow', sans-serif;
-  font-size: 14rem;
+  font-size: clamp(3.5rem, 12vw, 14rem);
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -205,31 +251,31 @@ body.white-bg {
 }
 
 .title-star {
-  width: 180px;
+  width: clamp(60px, 12vw, 180px);
   height: auto;
-  max-height: 180px; 
+  max-height: 180px;
   object-fit: contain;
 }
 
 .contact-please {
-  font-size: 2.8rem;
+  font-size: clamp(1.2rem, 4vw, 2.8rem);
   font-weight: 700;
   position: relative;
-  left: -315px;
+  left: clamp(-120px, -22vw, -315px);
   margin-top: -10px;
 }
 
 .contact-contact {
-  font-size: 2.8rem;
+  font-size: clamp(1.2rem, 4vw, 2.8rem);
   font-weight: 700;
   position: relative;
-  right: -264px;
+  right: clamp(-100px, -18vw, -264px);
   margin-top: -10px;
 }
 
 .contact-photo {
-  width: 230px;
-  height: 230px;
+  width: clamp(120px, 22vw, 230px);
+  height: clamp(120px, 22vw, 230px);
   object-fit: cover;
   margin: 0 auto;
 }
@@ -239,14 +285,14 @@ body.white-bg {
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: clamp(10px, 2vw, 20px);
 }
 
 .contact-list a {
   color: white;
   text-decoration: none;
-  font-size: 2rem;
-  font-weight: 400; 
+  font-size: clamp(1rem, 2.5vw, 2rem);
+  font-weight: 400;
   position: relative;
 }
 
@@ -262,7 +308,7 @@ body.white-bg {
 }
 
 .contact-list-left a:nth-child(2) { /* linkedin */
-  right: -150px;
+  right: clamp(-80px, -14vw, -150px);
 }
 
 .contact-list-left a:nth-child(3) { /* resume */
@@ -277,34 +323,53 @@ body.white-bg {
 }
 
 .contact-list-right a:nth-child(1) { /* cellphone */
-  left: 26px;
+  left: clamp(10px, 2.5vw, 26px);
 }
 
 .contact-list-right a:nth-child(2) { /* instagram */
-  left: -60px;
+  left: clamp(-30px, -5vw, -60px);
 }
 
 .contact-star {
   position: absolute;
   bottom: 9%;
   right: 23%;
-  width: 50px;
-}
-/* #endregion */
-
-/* #region STAR SPIN */
-/* @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: clamp(30px, 6vw, 50px);
 }
 
-.landing-star:hover, .title-star:hover, .contact-star:hover, .about-star:hover {
-  animation: spin 3.5s linear infinite;
-  cursor: pointer;
-} */
-/* #endregion */
+/* below this width the title/lists get too cramped for the fine-tuned offsets, so stack into a simple centered layout */
+@media (max-width: 680px) {
+  .contact-title {
+    flex-wrap: wrap;
+  }
 
+  .contact-please,
+  .contact-contact {
+    left: 0;
+    right: 0;
+  }
+
+  .contact-list {
+    position: static;
+    text-align: center !important;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .contact-list a {
+    left: 0 !important;
+    right: 0 !important;
+  }
+
+  .contacts {
+    height: auto;
+    min-height: 100vh;
+    padding: 30px 0 60px;
+  }
+
+  .contact-star {
+    position: static;
+    margin-top: 20px;
+  }
+}
+/* #endregion */

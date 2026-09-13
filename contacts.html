@@ -37,7 +37,7 @@
                 email
             </a>
 
-            <a href="https://linkedin.com//in/mawara-ahmed-5b6287280/" target="_blank">
+            <a href="https://linkedin.com/in/mawara-ahmed-5b6287280/" target="_blank">
                 linkedin
             </a>
 
@@ -68,7 +68,7 @@
 
         </div>
 
-        <img src="images/star.png" alt="" class="star-small contact-star">
+        <img src="images/star.png" alt="" class="contact-star">
 
 
                 <!-- BACK ARROW -->
@@ -78,36 +78,9 @@
 
     </main>
 
-<!-- STAR SPIN -->
-
+  <script src="star-spin.js"></script>
   <script>
-    document.querySelectorAll('.title-star, .contact-star').forEach(star => {
-        
-      let rotation = 0;
-      let animId = null;
-
-      const style = window.getComputedStyle(star);
-      const matrix = style.transform;
-      if (matrix !== 'none') {
-        const values = matrix.split('(')[1].split(')')[0].split(',');
-        const a = parseFloat(values[0]);
-        const b = parseFloat(values[1]);
-        rotation = Math.round(Math.atan2(b, a) * (180 / Math.PI));
-      }
-
-      star.addEventListener('mouseenter', () => {
-        function spin() {
-          rotation += 0.8; // Change speed here (lower = slower)
-          star.style.transform = `rotate(${rotation}deg)`;
-          animId = requestAnimationFrame(spin);
-        }
-        spin();
-      });
-
-      star.addEventListener('mouseleave', () => {
-        cancelAnimationFrame(animId); 
-      });
-    });
+    initStarSpin('.title-star, .contact-star');
   </script>
 
     <!--  COPIED!  -->
