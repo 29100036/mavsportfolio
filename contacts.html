@@ -9,7 +9,6 @@
     <link rel="icon" type="image/png" href="images/baby.png">
 
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@700&display=block" rel="stylesheet">
 </head>
 
 <body>
@@ -82,9 +81,8 @@
 <!-- STAR SPIN -->
 
   <script>
-    const stars = document.querySelectorAll('.landing-star, .title-star, .contact-star, .about-star');
-
-    stars.forEach(star => {
+    document.querySelectorAll('.title-star, .contact-star').forEach(star => {
+        
       let rotation = 0;
       let animId = null;
 
@@ -130,7 +128,7 @@
             // write the extracted text string straight into the user's system clipboard
             navigator.clipboard.writeText(textToCopy).then(() => {
             // temporarily swap the visible text on the page to "Copied!" for feedback
-            link.innerText = 'Copied!';
+            link.innerText = 'copied!';
             
             // wait 1500 milliseconds (1.5 seconds) before running the inner function
             setTimeout(() => {

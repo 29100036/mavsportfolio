@@ -21,12 +21,12 @@ body, html {
 .back-arrow {
   position: absolute;
   top: 40px;
-  left: 60px; /* Aligned tip directly with the left border of the hello! box */
+  left: 60px; 
   z-index: 100;
 }
 
 .back-arrow img {
-  width: 36px; /* Scaled down slightly */
+  width: 36px; 
   height: auto;
   display: block;
 }
@@ -103,32 +103,31 @@ body, html {
   margin-bottom: 12px;
 }
 
-/* Container holds both the photo and badge together */
+/* photo and badge together */
 .person-container {
   position: absolute;
   bottom: 0;
   right: 21%;
-  height: 98vh; /* scales everything together based on screen height */
-  transform: scale(1.43); /* maintains your original scale */
+  height: 98vh; 
+  transform: scale(1.43); 
   transform-origin: bottom center;
-  z-index: 2; /* keeps person/badge on top of the star */
-  pointer-events: none; /* so cursor hits the star behind it */
+  z-index: 2; 
+  pointer-events: none; 
 }
 
-/* Photo takes up full height of the container */
 .about-person {
   height: 100%;
   width: auto; /* preserves photo aspect ratio */
   display: block; /* removes potential vertical whitespace */
 }
 
-/* Badge pinned onto the photo (adjust position here) */
+/* badge pinned onto the photo */
 .about-badge {
   position: absolute;
-  top: 48%; /* Adjust to move badge up/down */
-  left: 39%; /* Adjust to move badge left/right */
-  width: 60px; /* Adjust size of badge here */
-  transform: rotate(-12deg); /* Slightly tilted pin look */
+  top: 48%; 
+  left: 39%; 
+  width: 60px; 
+  transform: rotate(-12deg); 
 }
 
 .about-star {
@@ -142,6 +141,44 @@ body, html {
   pointer-events: auto; 
 }
 
+/* #endregion */
+
+/* #region PROJECTS */
+body.white-bg {
+  background-color: white;
+  color: #ff00a0;
+}
+
+.projects-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+  text-align: center;
+}
+
+.projects-wip-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wip-text {
+  color: #ff00a0;
+  font-size: 3.8rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.projects-subtext {
+  color: #ff00a0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 14px;
+}
 /* #endregion */
 
 /* #region CONTACTS */

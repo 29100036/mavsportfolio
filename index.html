@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> mawara's portfolio website!</title>
+    <title>mawara's portfolio website!</title>
     <link rel="icon" type="image/png" href="images/baby.png">
 
     <link rel="stylesheet" href="style.css">
@@ -47,14 +47,9 @@
     <!-- STAR SPIN -->
 
     <script>
-        // find every star element across all pages and put them in a list
-        const stars = document.querySelectorAll('.landing-star, .title-star, .contact-star, .about-star');
-
-        // loop through each star found on the current page one by one
-        stars.forEach(star => {
-        // create a variable to track the star's current rotation angle in degrees
-        let rotation = 0;
+        document.querySelectorAll('.landing-star').forEach(star => {
         
+        let rotation = 0;
         // create a variable to hold the continuous animation loop ID so we can stop it later
         let animId = null;
 
